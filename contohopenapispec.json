@@ -153,6 +153,94 @@
   },
   "components": {
     "schemas": {
+      "LoginParam": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "LoginResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          }
+        }
+      },
+      "RefreshResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "expires_in": {
+            "type": "integer"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "token_type": {
+            "type": "string"
+          }
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "refresh_token": {
+            "type": "string"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "roles": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        }
+      },
+      "Users": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/User"
+        }
+      },
       "Error": {
         "required": [
           "error"
@@ -161,6 +249,41 @@
         "properties": {
           "error": {
             "type": "string"
+          }
+        }
+      },
+      "Roles": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Role"
+        }
+      },
+      "Role": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "id_group": {
+            "type": "integer"
+          },
+          "default_home": {
+            "type": "string"
+          },
+          "organization_id": {
+            "type": "string"
+          },
+          "admin_flag": {
+            "type": "boolean"
+          },
+          "mobile_flag": {
+            "type": "boolean"
+          },
+          "menu": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
           }
         }
       },
@@ -184,6 +307,345 @@
           },
           "id_menu": {
             "type": "integer"
+          }
+        }
+      },
+      "Menus": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Menu"
+        }
+      },
+      "SupersetShipDocument": {
+        "type": "object",
+        "properties": {
+          "shipDocument": {
+            "type": "string",
+            "format": "binary"
+          },
+          "documentNumber": {
+            "type": "integer"
+          },
+          "documentType": {
+            "type": "string"
+          },
+          "serviceNumber": {
+            "type": "string"
+          },
+          "documentDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "documentExpiryDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "placeCreated": {
+            "type": "string"
+          }
+        }
+      },
+      "GoodsDocument": {
+        "type": "object",
+        "properties": {
+          "shipDocument": {
+            "type": "string",
+            "format": "binary"
+          },
+          "documentNumber": {
+            "type": "integer"
+          },
+          "uploadAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "serviceNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "ShipDocument": {
+        "type": "object",
+        "properties": {
+          "shipDocument": {
+            "type": "string",
+            "format": "binary"
+          },
+          "documentNumber": {
+            "type": "integer"
+          },
+          "uploadAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "serviceNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "PeopleDocument": {
+        "type": "object",
+        "properties": {
+          "peopleDocument": {
+            "type": "string",
+            "format": "binary"
+          },
+          "documentNumber": {
+            "type": "integer"
+          },
+          "uploadAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "serviceNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "AgentDocument": {
+        "type": "object",
+        "properties": {
+          "agentDocument": {
+            "type": "string",
+            "format": "binary"
+          },
+          "documentNumber": {
+            "type": "integer"
+          },
+          "uploadAt": {
+            "type": "string",
+            "format": "date"
+          },
+          "serviceNumber": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_201": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "nessage": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "data": {
+            "$ref": "#/components/schemas/inline_response_200_data"
+          }
+        }
+      },
+      "inline_response_201_1": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/inline_response_201_1_data"
+          }
+        }
+      },
+      "inline_response_200_1": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/inline_response_200_1_data"
+          }
+        }
+      },
+      "document_documentID_body": {
+        "type": "object",
+        "properties": {
+          "documentNumber": {
+            "type": "integer"
+          },
+          "documentType": {
+            "type": "string"
+          },
+          "documentDate": {
+            "type": "string"
+          },
+          "documentExpiryDate": {
+            "type": "string"
+          },
+          "placeCreated": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_2": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/inline_response_200_2_data"
+          }
+        }
+      },
+      "inline_response_200_data": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_201_1_data": {
+        "type": "object",
+        "properties": {
+          "document_number": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "service_number": {
+            "type": "string"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "document_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "document_expiry_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "place_created": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_1_data_documents": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "path": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          },
+          "document_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "document_expiry_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "place_created": {
+            "type": "string"
+          },
+          "upload_date": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_1_data": {
+        "type": "object",
+        "properties": {
+          "service_number": {
+            "type": "string"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inline_response_200_1_data_documents"
+            }
+          }
+        }
+      },
+      "inline_response_200_2_data_documents": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "path": {
+            "type": "string"
+          },
+          "filename": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          },
+          "document_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "document_expiry_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "document_type": {
+            "type": "string"
+          },
+          "place_created": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200_2_data": {
+        "type": "object",
+        "properties": {
+          "service_number": {
+            "type": "string"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/inline_response_200_2_data_documents"
+            }
           }
         }
       }
