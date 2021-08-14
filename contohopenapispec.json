@@ -153,35 +153,6 @@
   },
   "components": {
     "schemas": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "username": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "roles": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "created_at": {
-            "type": "string"
-          }
-        }
-      },
-      "Users": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/User"
-        }
-      },
       "Error": {
         "required": [
           "error"
@@ -191,6 +162,35 @@
           "error": {
             "type": "string"
           }
+        }
+      },
+      "Menu": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "show_post": {
+            "type": "boolean"
+          },
+          "id_menu": {
+            "type": "integer"
+          }
+        }
+      },
+      "Menus": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Menu"
         }
       },
       "inline_response_201": {
