@@ -150,5 +150,43 @@
         }
       }
     }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "required": [
+          "error"
+        ],
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string"
+          }
+        }
+      },
+      "Menu": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "caption": {
+            "type": "string"
+          },
+          "show_post": {
+            "type": "boolean"
+          },
+          "id_menu": {
+            "type": "integer"
+          }
+        }
+      }
+    }
   }
 }
