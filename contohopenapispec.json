@@ -1,12 +1,5 @@
 {
   "openapi": "3.0.0",
-  "info": {
-    "title": "Percobaan Embed Swagger UI ke wikiJS",
-    "license": {
-      "name": "Percobaan Test"
-    },
-    "version": "1.0.0"
-  },
   "servers": [
     {
       "url": "https://virtserver.swaggerhub.com/peupl/INSW/1.0.0",
